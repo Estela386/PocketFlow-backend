@@ -1,4 +1,4 @@
-from models.analisis_model import Analisis
+from app.models.analisis_model import Analisis
 
 class AnalisisService:
 

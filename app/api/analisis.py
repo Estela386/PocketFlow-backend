@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from services.analisis_service import AnalisisService
+from app.services.analisis_service import AnalisisService
 
 router = APIRouter()
 analisis_service = AnalisisService()
