@@ -1,5 +1,5 @@
 import uuid
-from firebase_admin import db
+from app.core.firebase import db
 from fastapi import HTTPException
 from passlib.context import CryptContext
 from app.models.registro_model import RegistroResponse, RegistroRequest
