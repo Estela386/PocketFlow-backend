@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import analisis, registro, categorias, egreso  # Asegúrate de que estás corriendo desde raíz
+from app.api import analisis, registro, login, categorias, egreso  # Asegúrate de que estás corriendo desde raíz
 
 app = FastAPI()
 
@@ -11,6 +11,7 @@ def root():
 # Rutas con prefijos específicos
 app.include_router(analisis.router, prefix="/api/analisis", tags=["Análisis"])
 app.include_router(registro.router, prefix="/api/registro", tags=["Registro"])
+app.include_router(login.router, prefix="/api/login", tags=["Login"])
 # app.include_router(categorias.router, prefix="/api/categorias", tags=["Categorías"])
 # app.include_router(egreso.router, prefix="/api/egresos", tags=["Egresos"])
 
