@@ -1,2 +1,2 @@
 # Firebase credentials
-app/core/credentials/*.json
+app\core\credentials\*.json
