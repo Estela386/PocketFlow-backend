@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.models.ingreso_model import Ingreso
+from app.models.ingreso_model import Ingreso, IngresoCreate
 from app.services.ingreso_service import registrar_ingreso, obtener_ingresos_por_usuario
 
 router = APIRouter(
@@ -8,7 +8,7 @@ router = APIRouter(
 )
 
 @router.post("", response_model=Ingreso)
-async def crear_ingreso(ingreso: Ingreso):
+async def crear_ingreso(ingreso: IngresoCreate):
     ingreso_creado = await registrar_ingreso(ingreso)
     if ingreso_creado:
         return ingreso_creado

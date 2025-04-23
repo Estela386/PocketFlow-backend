@@ -3,24 +3,34 @@ from firebase_admin import db
 from app.models.ingreso_model import Ingreso, IngresoCreate
 from datetime import datetime
 from typing import List
+from fastapi import HTTPException
 
 async def registrar_ingreso(ingreso: IngresoCreate) -> Ingreso:
     try:
         ingreso_id = str(uuid.uuid4())
-        ingreso.id = ingreso_id
+
+        nuevo_ingreso = Ingreso(
+            id=ingreso_id,
+            id_usuario=ingreso.id_usuario,
+            fecha=ingreso.fecha,
+            cantidad=ingreso.cantidad,
+            motivo=ingreso.motivo
+        )
 
         ref = db.reference(f"ingresos/{ingreso_id}")
         ref.set({
-            "id": ingreso.id,
-            "id_usuario": ingreso.id_usuario,
-            "fecha": ingreso.fecha.isoformat(),  # Guardar como string ISO
-            "cantidad": ingreso.cantidad,
-            "motivo": ingreso.motivo
+            "id": nuevo_ingreso.id,
+            "id_usuario": nuevo_ingreso.id_usuario,
+            "fecha": nuevo_ingreso.fecha.isoformat(),
+            "cantidad": nuevo_ingreso.cantidad,
+            "motivo": nuevo_ingreso.motivo
         })
-        return ingreso
+
+        return nuevo_ingreso
+
     except Exception as e:
         print(f"Error al registrar ingreso: {e}")
-        return None
+        raise HTTPException(status_code=500, detail="Error al registrar ingreso")
 
 async def obtener_ingresos_por_usuario(id_usuario: str) -> List[Ingreso]:
     try:

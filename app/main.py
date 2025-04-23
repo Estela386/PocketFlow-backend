@@ -14,7 +14,7 @@ app.include_router(registro.router, prefix="/api/registro", tags=["Registro"])
 app.include_router(login.router, prefix="/api/login", tags=["Login"])
 app.include_router(ingreso.router, prefix="/api", tags=["Ingresos"])
 # app.include_router(categorias.router, prefix="/api/categorias", tags=["Categorías"])
-# app.include_router(egreso.router, prefix="/api/egresos", tags=["Egresos"])
+app.include_router(egreso.router, prefix="/api", tags=["Egresos"])
 
 if __name__ == "__main__":
     import uvicorn
