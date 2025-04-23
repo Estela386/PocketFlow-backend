@@ -1,9 +1,14 @@
 from pydantic import BaseModel
+from datetime import date
 
-class Ingreso(BaseModel):
-    id: str  # ID de documento Firebase
-    id_usuario: str  # referencia al UID del usuario
-    fecha: str  # 'YYYY-MM-DDTHH:MM:SS'
+class IngresoCreate(BaseModel):  # Este lo usas para recibir datos del frontend
+    id_usuario: str
+    fecha: date
     cantidad: float
     motivo: str
-    categoria_id: str  # ID de la categoría en Firestore
+    #Dejo esto comentado hasta que tengamos el apartado definitivo de las categorias
+    #categoria_id: str  # ID de la categoría en Firestore
+
+
+class Ingreso(IngresoCreate):  # Este lo usas para responder con datos completos
+    id: str
