@@ -66,7 +66,7 @@ def actualizar_categoria(uid_usuario: str, categoria_id: str, categoria: Categor
         raise HTTPException(status_code=500, detail=f"Error al actualizar categoría: {str(e)}")
 
 
-def filtrar_categorias_por_clasificacion(uid_usuario: str, clasificacion: str):
+def filtrar(uid_usuario: str, clasificacion: str):
     try:
         ref = db.reference(f"categorias/{uid_usuario}")
         snapshot = ref.get()
