@@ -1,6 +1,3 @@
-
-
-
 from app.models.categoria_model import Categoria
 from app.core.firebase import db
 from fastapi import HTTPException
@@ -50,6 +47,7 @@ def eliminar_categoria(uid_usuario: str, categoria_id: str):
         ref.delete()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al eliminar categoría: {str(e)}")
+    
     
 def actualizar_categoria(uid_usuario: str, categoria_id: str, categoria: Categoria):
     try:
