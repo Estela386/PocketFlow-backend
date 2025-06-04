@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import analisis, registro, login, ingreso, categorias, egreso, perfil, predicciones # Asegúrate de que estás corriendo desde raíz
+from app.api import analisis, registro, login, ingreso, categorias, egreso, perfil, predicciones, huella # Asegúrate de que estás corriendo desde raíz
 
 app = FastAPI()
 
@@ -17,6 +17,8 @@ app.include_router(categorias.router, prefix="/api/categorias", tags=["Categorí
 app.include_router(egreso.router, prefix="/api", tags=["Egresos"])
 app.include_router(perfil.router, prefix="/api/perfil", tags=["Perfil"])
 app.include_router(predicciones.router, prefix="/api", tags=["Predicciones"])
+app.include_router(predicciones.router, prefix="/api", tags=["Predicciones"])
+app.include_router(huella.router, prefix="/api/huella", tags=["Huella"])
 
 if __name__ == "__main__":
     import uvicorn

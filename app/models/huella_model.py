@@ -1,8 +1,14 @@
 from pydantic import BaseModel
+from typing import List
 
-class HuellaCarbono(BaseModel):
-    id: str
+class EgresoItem(BaseModel):
     id_usuario: str
     fecha: str
-    categoria_id: str
-    co2_estimado_kg: float
+    cantidad: float
+    motivo: str
+    id: str
+
+class HuellaResponse(BaseModel):
+    motivo: str
+    cantidad: float
+    co2_kg: float
